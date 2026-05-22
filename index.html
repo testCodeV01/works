@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TKG | フリーランスITエンジニア｜Ruby on Rails / フルスタック開発</title>
+  <meta name="description" content="フリーランスITエンジニアTKGのポートフォリオ。Ruby on Rails歴15年以上。Webアプリ・バックエンドAPI・業務システム開発を承ります。九州大学卒。">
+  <meta name="keywords" content="フリーランス, ITエンジニア, Ruby on Rails, Rails, React, Next.js, Web開発, バックエンド, フルスタック, TKG">
+  <meta name="author" content="TKG">
+  <meta name="robots" content="index, follow">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TKG | フリーランスITエンジニア｜Ruby on Rails / フルスタック開発">
+  <meta property="og:description" content="Ruby on Rails歴15年以上のフリーランスエンジニア。Webアプリ・API・業務システム開発のご依頼はお気軽にどうぞ。">
+  <meta property="og:url" content="https://works.tk-labo.com/">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TKG | フリーランスITエンジニア｜Ruby on Rails / フルスタック開発">
+  <meta name="twitter:description" content="Ruby on Rails歴15年以上のフリーランスエンジニア。お気軽にご相談ください。">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://works.tk-labo.com/">
+
+  <!-- ファビコン -->
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- JSON-LD 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "TKG",
+    "jobTitle": "フリーランスITエンジニア",
+    "description": "Ruby on Rails歴15年以上のフリーランスエンジニア。Webアプリ・API・業務システム開発が得意。",
+    "url": "https://works.tk-labo.com/",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "九州大学"
+    },
+    "knowsAbout": ["Ruby on Rails", "React", "Next.js", "AWS", "Docker", "PostgreSQL", "MySQL"],
+    "sameAs": [
+      "https://github.com/testCodeV01"
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG43MNP9RG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NG43MNP9RG');
+  </script>
+
+  <style>
+    :root {
+      --accent: #c0392b;
+      --accent-dark: #922b21;
+      --dark: #1a1a2e;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; color: #333; }
+
+    .navbar-brand { font-weight: 800; font-size: 1.5rem; letter-spacing: .05em; }
+
+    /* ヒーロー */
+    #hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 130px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(192,57,43,.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    #hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; }
+    #hero .badge-tech {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.25);
+      font-size: .8rem;
+      padding: .35em .7em;
+      border-radius: 4px;
+      margin-bottom: .4rem;
+    }
+
+    /* セクション共通 */
+    section { padding: 88px 0; }
+    section:nth-of-type(even) { background-color: #f8f9fa; }
+    .section-title {
+      font-weight: 800;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 44px; height: 4px;
+      background: var(--accent);
+      margin: .6rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* 数値ハイライト */
+    .stat-box { border-left: 4px solid var(--accent); padding-left: 1rem; }
+    .stat-box .num { font-size: 2.4rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat-box small { color: #666; font-size: .8rem; }
+
+    /* スキル */
+    .skill-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: .9rem; }
+    .progress { border-radius: 4px; }
+    .progress-bar { background: var(--accent); border-radius: 4px; }
+    .tech-chip {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: .3rem .7rem;
+      font-size: .8rem;
+      margin: .25rem;
+    }
+
+    /* 実績カード */
+    .work-card { border: none; box-shadow: 0 2px 16px rgba(0,0,0,.07); transition: transform .2s, box-shadow .2s; border-radius: 10px; }
+    .work-card:hover { transform: translateY(-5px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .work-card .period { font-size: .75rem; color: #888; }
+    .work-card .card-body { padding: 1.4rem; }
+
+    /* タイムライン */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 7px; top: 6px; bottom: 6px;
+      width: 2px; background: #dee2e6;
+    }
+    .tl-item { position: relative; margin-bottom: 2rem; }
+    .tl-dot {
+      position: absolute; left: -2rem;
+      width: 16px; height: 16px;
+      background: var(--accent); border-radius: 50%;
+      top: 4px;
+    }
+    .tl-item h3 { font-size: 1rem; font-weight: 700; }
+    .tl-item .tl-meta { font-size: .8rem; color: #888; margin-bottom: .4rem; }
+
+    /* フッター */
+    footer { background: var(--dark); color: #adb5bd; }
+    footer a { color: #adb5bd; text-decoration: none; transition: color .2s; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ナビゲーション -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm" aria-label="メインナビゲーション">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">TKG</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="メニューを開閉">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#works">Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#career">Career</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link btn btn-sm px-3 py-1" href="#contact"
+               style="background:var(--accent); color:#fff; border-radius:4px;">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ヒーロー -->
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <p class="mb-2" style="letter-spacing:.2em; font-size:.85rem; opacity:.7;">FREELANCE IT ENGINEER</p>
+            <h1 id="hero-heading" class="mb-3">
+              TKG
+              <span style="display:block; font-size:.45em; font-weight:400; opacity:.85; margin-top:.3rem;">
+                Ruby on Rails ／ フルスタック開発
+              </span>
+            </h1>
+            <p class="mb-4" style="opacity:.85; font-size:1.05rem; line-height:1.8;">
+              Rails歴15年以上のフリーランスエンジニア。<br>
+              曖昧な要件からのヒアリングを行い、
+              要件定義・設計・実装・テスト・リリース・運用まで一貫対応します。
+            </p>
+            <div class="mb-4">
+              <span class="badge-tech me-2">Ruby on Rails</span>
+              <span class="badge-tech me-2">React / Next.js</span>
+              <span class="badge-tech me-2">AWS</span>
+              <span class="badge-tech me-2">Docker</span>
+              <span class="badge-tech">Claude Code</span>
+            </div>
+            <a href="#contact" class="btn btn-danger btn-md px-5 me-2 mb-2">お仕事の依頼</a>
+            <a href="#works" class="btn btn-outline-light btn-md px-4 mb-2">実績を見る</a>
+          </div>
+          <div class="col-lg-5">
+            <div class="row g-3 text-center">
+              <div class="col-4">
+                <div style="background:rgba(255,255,255,.08); border-radius:10px; padding:1.2rem .5rem;">
+                  <div style="font-size:2rem; font-weight:800; color:#e74c3c;">15+</div>
+                  <div style="font-size:.72rem; opacity:.75; margin-top:.2rem;">Rails歴（年）</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div style="background:rgba(255,255,255,.08); border-radius:10px; padding:1.2rem .5rem;">
+                  <div style="font-size:2rem; font-weight:800; color:#e74c3c;">8+</div>
+                  <div style="font-size:.72rem; opacity:.75; margin-top:.2rem;">フリーランス歴（年）</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div style="background:rgba(255,255,255,.08); border-radius:10px; padding:1.2rem .5rem;">
+                  <div style="font-size:2rem; font-weight:800; color:#e74c3c;">10+</div>
+                  <div style="font-size:.72rem; opacity:.75; margin-top:.2rem;">参画案件数</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 class="section-title text-center" id="about-heading">About</h2>
+        <div class="row align-items-center g-5">
+          <div class="col-md-4 text-center">
+            <img src="assets/tkgpic.jpg" alt="TKG プロフィール写真"
+              class="rounded-circle mb-3 object-fit-cover"
+              style="width:160px; height:160px; object-fit:cover; object-position:center top;">
+            <h3 class="h5 fw-bold mb-1">TKG</h3>
+            <p class="text-muted small mb-0">フリーランスITエンジニア</p>
+          </div>
+          <div class="col-md-8">
+            <p class="mb-3" style="line-height:1.9;">
+              九州大学にて物理学を専攻。特に理論物理学に興味を持ち、大学院では素粒子物理学・理論物理学をさらに深く学ぶ。
+              家庭の事情により物理の道を断念。その後企業に就職し、WEBデザインなどを通じてIT分野に転身しました。
+            </p>
+            <p class="mb-3" style="line-height:1.9;">
+              建設業系IT企業にて約10年間、Web・モバイル・組み込み系の開発を幅広く経験後、
+              2018年よりフリーランスとして独立。以来8年以上にわたり様々な業界のシステム開発に携わっています。
+            </p>
+            <p class="mb-3" style="line-height:1.9;">
+              Ruby on Railsを中心に、React / Next.jsを組み合わせたフルスタック開発が得意。
+              バックエンドのAPI設計から認証・クラウドインフラまで一気通貫で対応できます。
+              直近ではClaude Code・Codexを活用したAI駆動開発にも積極的に取り組み、
+              開発効率の向上を実践しています。
+            </p>
+            <p class="mb-4" style="line-height:1.9;">
+              「こういうものを作りたい」という段階からご相談いただけます。
+              曖昧な要件のヒアリング・要件定義から入り、設計・実装・テスト・リリース・運用まで
+              <strong>プロジェクト全工程を一人で担える</strong>ことが強みです。
+            </p>
+            <div class="row g-3">
+              <div class="col-sm-4">
+                <div class="stat-box">
+                  <div class="num">15+</div>
+                  <small>Ruby on Rails経験年数</small>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="stat-box">
+                  <div class="num">3年</div>
+                  <small>最長単独案件（お薬手帳）</small>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="stat-box">
+                  <div class="num">九大</div>
+                  <small>九州大学 卒業</small>
+                </div>
+              </div>
+            </div>
+            <ul class="list-inline mt-4 mb-0">
+              <li class="list-inline-item me-4"><i class="bi bi-geo-alt me-1 text-danger"></i>佐賀県</li>
+              <li class="list-inline-item me-4"><i class="bi bi-briefcase me-1 text-danger"></i>フリーランス（委託）</li>
+              <li class="list-inline-item me-4"><i class="bi bi-pc-display me-1 text-danger"></i>フルリモート対応</li>
+              <li class="list-inline-item"><i class="bi bi-globe me-1 text-danger"></i>日本国内・海外チーム対応可</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <h2 class="section-title text-center" id="skills-heading">Skills</h2>
+        <div class="row g-5">
+
+          <!-- メインスキル -->
+          <div class="col-lg-6">
+            <h3 class="h6 fw-bold text-uppercase text-muted mb-4">Languages &amp; Frameworks</h3>
+
+            <div class="mb-3">
+              <div class="skill-label fw-semibold"><span>Ruby / Ruby on Rails</span><span class="text-danger">★★★★★</span></div>
+              <div class="progress" style="height:8px;" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width:95%"></div>
+              </div>
+              <small class="text-muted">v1.8x〜v7系。RSpec・設計・API・Gem開発まで</small>
+            </div>
+
+            <div class="mb-3">
+              <div class="skill-label fw-semibold"><span>React / Next.js / TypeScript</span><span class="text-danger">★★★★☆</span></div>
+              <div class="progress" style="height:8px;" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width:80%"></div>
+              </div>
+              <small class="text-muted">Vite / Mantine / Tailwind 等と組み合わせた実装経験</small>
+            </div>
+
+            <div class="mb-3">
+              <div class="skill-label fw-semibold"><span>HTML / CSS / jQuery / SCSS</span><span class="text-danger">★★★★☆</span></div>
+              <div class="progress" style="height:8px;" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width:80%"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="skill-label fw-semibold"><span>Java / Swift / C# / VB.NET</span><span class="text-danger">★★★☆☆</span></div>
+              <div class="progress" style="height:8px;" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar bg-secondary" style="width:60%"></div>
+              </div>
+              <small class="text-muted">iOS・Android・組み込み・Windowsアプリ開発経験あり</small>
+            </div>
+
+            <div class="mb-3">
+              <div class="skill-label fw-semibold"><span>PHP / CodeIgniter</span><span class="text-danger">★★☆☆☆</span></div>
+              <div class="progress" style="height:8px;" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar bg-secondary" style="width:40%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- インフラ・ツール -->
+          <div class="col-lg-6">
+            <h3 class="h6 fw-bold text-uppercase text-muted mb-4">Infrastructure &amp; Tools</h3>
+            <div class="mb-4">
+              <p class="small fw-semibold text-muted mb-2">DB</p>
+              <span class="tech-chip">PostgreSQL</span>
+              <span class="tech-chip">MySQL</span>
+              <span class="tech-chip">Oracle</span>
+              <span class="tech-chip">SQLite</span>
+              <span class="tech-chip">Redis</span>
+            </div>
+            <div class="mb-4">
+              <p class="small fw-semibold text-muted mb-2">Cloud / Infra</p>
+              <span class="tech-chip">AWS（S3 / Cognito）</span>
+              <span class="tech-chip">Auth0</span>
+              <span class="tech-chip">Docker</span>
+              <span class="tech-chip">Terraform</span>
+              <span class="tech-chip">Nginx</span>
+            </div>
+            <div class="mb-4">
+              <p class="small fw-semibold text-muted mb-2">Dev Tools</p>
+              <span class="tech-chip">Git / GitHub</span>
+              <span class="tech-chip">Sidekiq / ActiveJob</span>
+              <span class="tech-chip">RSpec</span>
+              <span class="tech-chip">Algolia</span>
+              <span class="tech-chip">Firebase</span>
+              <span class="tech-chip">Line API</span>
+            </div>
+            <div class="mb-2">
+              <p class="small fw-semibold text-muted mb-2">AI開発ツール</p>
+              <span class="tech-chip" style="border-color:#e74c3c; color:#e74c3c;">Claude Code</span>
+              <span class="tech-chip" style="border-color:#e74c3c; color:#e74c3c;">Codex</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section id="works" aria-labelledby="works-heading">
+      <div class="container">
+        <h2 class="section-title text-center" id="works-heading">Works</h2>
+        <p class="text-center text-muted mb-5">主な参画案件の抜粋です（直近・代表的なものを掲載）</p>
+
+        <div class="row g-4">
+
+
+          <div class="col-md-6 col-lg-4">
+            <article class="card work-card h-100">
+              <div class="card-body">
+                <p class="period mb-1">2022/01 〜 2025/04 ／ 3年4か月</p>
+                <h3 class="h6 fw-bold mb-2">電子お薬手帳アプリ（BtoC）</h3>
+                <p class="small text-muted mb-3">
+                  最初の3か月は一人で先行して基盤構築（Docker・Rails・Next.js・PostgreSQL）。
+                  その後ベトナム開発チームを迎え、<strong>バックエンドリードとして仕様調整・タスク割振り・コードレビュー</strong>を担当。
+                  AWS Cognito認証・処方箋QRコード読取・外部API連携・SSO・SMS認証など多機能を実装。
+                </p>
+                <div>
+                  <span class="badge bg-dark me-1">Ruby on Rails</span>
+                  <span class="badge bg-primary me-1">Next.js</span>
+                  <span class="badge bg-warning text-dark me-1">AWS Cognito</span>
+                  <span class="badge bg-secondary me-1">Docker</span>
+                  <span class="badge bg-secondary">PostgreSQL</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="card work-card h-100">
+              <div class="card-body">
+                <p class="period mb-1">2023/07 〜 2024/10 ／ 1年2か月（並行稼働）</p>
+                <h3 class="h6 fw-bold mb-2">ECサービス開発（BtoC）</h3>
+                <p class="small text-muted mb-3">
+                  中規模ECサイト・管理サイトの開発・改修を担当。
+                  テーブル数200以上のRailsアプリでAlgoliaを用いた検索機能の改修、
+                  Slim／Bootstrap／Reactコンポーネントを用いたUI開発。
+                  スクラム・カンバン方式の開発体制。
+                </p>
+                <div>
+                  <span class="badge bg-dark me-1">Ruby on Rails</span>
+                  <span class="badge bg-primary me-1">React</span>
+                  <span class="badge bg-info text-dark me-1">Algolia</span>
+                  <span class="badge bg-secondary me-1">solidus</span>
+                  <span class="badge bg-secondary">PostgreSQL</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="card work-card h-100">
+              <div class="card-body">
+                <p class="period mb-1">2021/07 〜 2021/12 ／ 6か月</p>
+                <h3 class="h6 fw-bold mb-2">ヘルスケアサービス開発（BtoC）</h3>
+                <p class="small text-muted mb-3">
+                  健保・健診向けヘルスケアアプリの改修。
+                  複数コンポーネント構成のシステムをAPIで連携する設計。
+                  Firebase プッシュ通知Gemをレガシープロトコルからv1へ切り替える自社Gem開発、
+                  AWS S3ファイルダウンロードライブラリ作成を担当。
+                </p>
+                <div>
+                  <span class="badge bg-dark me-1">Ruby on Rails</span>
+                  <span class="badge bg-danger me-1">Firebase</span>
+                  <span class="badge bg-warning text-dark">AWS S3</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="card work-card h-100">
+              <div class="card-body">
+                <p class="period mb-1">2020/08 〜 2021/07 ／ 1年</p>
+                <h3 class="h6 fw-bold mb-2">賃貸保証会社 社内システム改修</h3>
+                <p class="small text-muted mb-3">
+                  WEB（PHP/CodeIgniter）と基幹システム（C#）の両方を担当。
+                  プロパー社員からヒアリングし提案資料を作成→設計→実装→週次リリースの流れで進行。
+                  PHPUnit単体テスト・手動テスト両用で品質管理。
+                </p>
+                <div>
+                  <span class="badge bg-success me-1">PHP</span>
+                  <span class="badge bg-secondary me-1">CodeIgniter</span>
+                  <span class="badge bg-secondary me-1">C#</span>
+                  <span class="badge bg-secondary">Docker</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="card work-card h-100">
+              <div class="card-body">
+                <p class="period mb-1">2018/04 〜 2019/09 ／ 1年5か月</p>
+                <h3 class="h6 fw-bold mb-2">建設業向けプラットフォーム開発</h3>
+                <p class="small text-muted mb-3">
+                  ライセンス管理・アカウント管理・他サービス連携APIの開発。
+                  客先へのモック・プロトタイプ提案も担当。
+                  Hexoによるサービスマニュアル開発、Sidekiq（ActiveJob）キュー処理など。
+                </p>
+                <div>
+                  <span class="badge bg-dark me-1">Ruby on Rails</span>
+                  <span class="badge bg-secondary me-1">jQuery</span>
+                  <span class="badge bg-secondary me-1">MySQL</span>
+                  <span class="badge bg-secondary">Sidekiq</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Career -->
+    <section id="career" aria-labelledby="career-heading">
+      <div class="container">
+        <h2 class="section-title text-center" id="career-heading">Career</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="timeline">
+
+              <!-- フリーランス期間（ひとまとめ） -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <p class="tl-meta">2018/01 〜 現在（8年以上）</p>
+                <h3>フリーランス ITエンジニア</h3>
+                <p class="small text-muted mb-3">
+                  Ruby on Rails / React / Next.js を軸に、Webサービス・業務システム・API開発を中心に活動。
+                  ヒアリング・要件定義から設計・実装・テスト・リリース・運用まで一貫対応。
+                  アジャイル・スクラム形式のチーム開発、海外チームとの共同開発リード経験あり。
+                </p>
+
+                <!-- 案件リスト -->
+                <div class="border-start border-2 ps-3 ms-1" style="border-color:#dee2e6 !important;">
+                  <p class="small fw-bold text-muted mb-1" style="letter-spacing:.05em;">主な参画案件</p>
+                  <p class="small text-muted mb-2">フリーランスとして継続稼働中。案件の期間はプロジェクトの性質・規模によりさまざまです。</p>
+                  <ul class="list-unstyled mb-0" style="font-size:.82rem; line-height:1.9;">
+                    <li>
+                      <span class="text-muted me-2">2025/05〜現在</span>
+                      案件参画中
+                    </li>
+                    <li>
+                      <span class="text-muted me-2">2022/01〜2025/04</span>
+                      電子お薬手帳アプリ開発・バックエンドリード
+                      <span class="ms-1 text-muted">／ Rails · Next.js · AWS Cognito</span>
+                    </li>
+                    <li>
+                      <span class="text-muted me-2">2023/07〜2024/10</span>
+                      ECサービス開発（上記と並行稼働）
+                      <span class="ms-1 text-muted">／ Rails · React · Algolia</span>
+                    </li>
+                    <li>
+                      <span class="text-muted me-2">2021/07〜2021/12</span>
+                      ヘルスケアサービス開発
+                      <span class="ms-1 text-muted">／ Rails · Firebase · AWS S3</span>
+                    </li>
+                    <li>
+                      <span class="text-muted me-2">2020/08〜2021/07</span>
+                      賃貸保証会社 社内システム改修
+                      <span class="ms-1 text-muted">／ PHP · CodeIgniter · C#</span>
+                    </li>
+                    <li>
+                      <span class="text-muted me-2">2020/04〜2020/07</span>
+                      車載機（ドライブレコーダ）開発
+                      <span class="ms-1 text-muted">／ Java · Android Studio</span>
+                    </li>
+                    <li>
+                      <span class="text-muted me-2">2019/11〜2020/03</span>
+                      JR 車補システム移植
+                      <span class="ms-1 text-muted">／ Java · C#</span>
+                    </li>
+                    <li>
+                      <span class="text-muted me-2">2018/01〜2019/09</span>
+                      建設業向けプラットフォーム · 重機レンタル管理システム開発
+                      <span class="ms-1 text-muted">／ Rails · MySQL</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 正社員期間 -->
+              <div class="tl-item">
+                <div class="tl-dot" style="background:#adb5bd;"></div>
+                <p class="tl-meta">2007/08 〜 2017/08（正社員 約10年）</p>
+                <h3>建設機械メーカー系IT企業</h3>
+                <p class="small text-muted">
+                  Ruby on Railsによる建機監視・環境調査ツール・プラットフォーム開発。
+                  iOS（Swift）/ Android（Java）/ Windows（C#/VB.NET）アプリ開発。
+                  社内業務システムの開発・保守・新規移行など幅広く担当。
+                </p>
+              </div>
+
+              <!-- 学歴 -->
+              <div class="tl-item">
+                <div class="tl-dot" style="background:#adb5bd;"></div>
+                <p class="tl-meta">〜 2007</p>
+                <h3>九州大学 卒業 ／ 九州大学大学院 中退</h3>
+                <p class="small text-muted">
+                  学部で物理学を専攻、大学院では素粒子物理学・理論物理学を深く学ぶ。
+                  家庭の事情により物理の道を断念後、企業に就職してWEBデザインなどを通じてIT分野に転身。
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <h2 class="section-title text-center" id="services-heading">Services</h2>
+
+        <!-- 対応工程フロー -->
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-1 mb-5" aria-label="対応可能工程">
+          <span class="px-3 py-2 rounded fw-semibold text-white" style="background:var(--accent); font-size:.85rem;">ヒアリング</span>
+          <i class="bi bi-chevron-right text-muted"></i>
+          <span class="px-3 py-2 rounded fw-semibold text-white" style="background:var(--accent); font-size:.85rem;">要件定義</span>
+          <i class="bi bi-chevron-right text-muted"></i>
+          <span class="px-3 py-2 rounded fw-semibold text-white" style="background:var(--accent); font-size:.85rem;">設計</span>
+          <i class="bi bi-chevron-right text-muted"></i>
+          <span class="px-3 py-2 rounded fw-semibold text-white" style="background:var(--accent); font-size:.85rem;">実装</span>
+          <i class="bi bi-chevron-right text-muted"></i>
+          <span class="px-3 py-2 rounded fw-semibold text-white" style="background:var(--accent); font-size:.85rem;">テスト</span>
+          <i class="bi bi-chevron-right text-muted"></i>
+          <span class="px-3 py-2 rounded fw-semibold text-white" style="background:var(--accent); font-size:.85rem;">リリース</span>
+          <i class="bi bi-chevron-right text-muted"></i>
+          <span class="px-3 py-2 rounded fw-semibold text-white" style="background:var(--accent); font-size:.85rem;">運用・保守</span>
+        </div>
+        <p class="text-center text-muted small mb-5">曖昧な要件・アイデア段階からご相談ください。全工程を一貫してお任せいただけます。</p>
+
+        <div class="row g-4 text-center">
+
+          <div class="col-md-4">
+            <div class="card work-card h-100 p-4">
+              <i class="bi bi-server fs-1 mb-3" style="color:var(--accent);"></i>
+              <h3 class="h5 fw-bold">バックエンド・API開発</h3>
+              <p class="text-muted small mt-2">
+                Ruby on RailsによるWebアプリ・REST API開発。
+                認証（OAuth / SSO / Cognito）・外部APIとの連携・非同期処理・Gem開発まで対応。
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card work-card h-100 p-4">
+              <i class="bi bi-layout-text-window-reverse fs-1 mb-3" style="color:var(--accent);"></i>
+              <h3 class="h5 fw-bold">フルスタック Web 開発</h3>
+              <p class="text-muted small mt-2">
+                Rails + React / Next.js を組み合わせたフルスタック開発。
+                新規サービス立ち上げ〜既存システムの機能追加・リファクタまで幅広く対応。
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card work-card h-100 p-4">
+              <i class="bi bi-cloud-check fs-1 mb-3" style="color:var(--accent);"></i>
+              <h3 class="h5 fw-bold">インフラ・DevOps</h3>
+              <p class="text-muted small mt-2">
+                Docker・AWS・Auth0・Terraformを使ったインフラ構築・CI/CD整備。
+                セキュアで拡張性の高い設計を提案・実装します。
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card work-card h-100 p-4">
+              <i class="bi bi-people-fill fs-1 mb-3" style="color:var(--accent);"></i>
+              <h3 class="h5 fw-bold">チーム開発支援・レビュー</h3>
+              <p class="text-muted small mt-2">
+                海外（ベトナム）チームとの共同開発リード経験あり。
+                タスク割振り・コードレビュー・仕様調整など、開発全体のスムーズな進行を支援します。
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card work-card h-100 p-4">
+              <i class="bi bi-robot fs-1 mb-3" style="color:var(--accent);"></i>
+              <h3 class="h5 fw-bold">AI 駆動開発の導入支援</h3>
+              <p class="text-muted small mt-2">
+                Claude Code・Codexを実務に導入してきた経験をもとに、
+                開発チームへのAIツール活用・効率化を支援します。
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card work-card h-100 p-4">
+              <i class="bi bi-phone-fill fs-1 mb-3" style="color:var(--accent);"></i>
+              <h3 class="h5 fw-bold">モバイル・業務システム</h3>
+              <p class="text-muted small mt-2">
+                iOS（Swift）・Android（Java）・Windowsアプリ（C#）の開発経験あり。
+                業務自動化・組み込み系のご相談もお気軽にどうぞ。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 class="section-title text-center" id="contact-heading">Contact</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <p class="text-center text-muted mb-4">
+              お仕事のご依頼・ご相談はお気軽にどうぞ。<br>
+              2～7営業日以内にご返信いたします。
+            </p>
+            <form id="contactForm" novalidate>
+              <div class="mb-3">
+                <label for="name" class="form-label fw-semibold">お名前 <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="name" name="name" required autocomplete="name">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">メールアドレス <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label fw-semibold">件名</label>
+                <input type="text" class="form-control" id="subject" name="subject">
+              </div>
+              <div class="mb-4">
+                <label for="message" class="form-label fw-semibold">メッセージ <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+              </div>
+              <div id="formMessage" class="d-none" role="alert"></div>
+              <div class="text-center mt-3">
+                <button type="submit" id="submitBtn" class="btn btn-danger btn-lg px-5">送信する</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="py-5">
+    <div class="container text-center">
+      <p class="fw-bold mb-1" style="color:#fff; font-size:1.2rem;">TKG</p>
+      <p class="small mb-3">フリーランスITエンジニア ／ Ruby on Rails / フルスタック</p>
+      <p class="mb-3">
+        <a href="https://github.com/testCodeV01" target="_blank" rel="noopener noreferrer" aria-label="GitHubプロフィール">
+          <i class="bi bi-github fs-4 me-3"></i>
+        </a>
+      </p>
+      <p class="small mb-0">&copy; 2026 TKG. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- コンタクトフォーム -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('submitBtn');
+      const msgEl = document.getElementById('formMessage');
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        msgEl.className = 'alert alert-warning mt-3';
+        msgEl.textContent = 'お名前・メールアドレス・メッセージは必須です。';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      msgEl.className = 'd-none';
+
+      try {
+        const res = await fetch('https://sciencehub.tk-labo.com/api/external_contacts/receive', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            subject: document.getElementById('subject').value.trim(),
+            body: message
+          })
+        });
+
+        if (res.ok) {
+          msgEl.className = 'alert alert-success mt-3';
+          msgEl.textContent = 'お問い合わせを受け付けました。2営業日以内にご返信いたします。';
+          this.reset();
+        } else {
+          throw new Error('server_error');
+        }
+      } catch {
+        msgEl.className = 'alert alert-danger mt-3';
+        msgEl.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '送信する';
+      }
+    });
+  </script>
+
+  <!-- ナビアクティブ -->
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle(
+              'active',
+              link.getAttribute('href') === '#' + entry.target.id
+            );
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
