@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://works.tk-labo.com/sitemap.xml
