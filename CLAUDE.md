@@ -26,14 +26,26 @@ assets/
 
 ## Design system
 
-The site uses a "方眼ノート / lab notebook" visual language, derived from TKG's theoretical-physics background. Do **not** reintroduce Bootstrap or another CSS framework — everything is hand-authored CSS Grid/Flex.
+Since v3.0.0 the site follows the **ScienceHub** look (same author's product at `sciencehub.tk-labo.com`, whose guide is `docs/design-guidelines.md` in that repo), with one deliberate difference: **no rounded corners anywhere** (ScienceHub uses `.5rem` / `999px`; here everything is square). Do **not** reintroduce Bootstrap or another CSS framework — everything is hand-authored CSS Grid/Flex.
 
-- **Tokens**: all colors are CSS custom properties on bare `:root`. Dark mode redefines only the tokens, in both `@media (prefers-color-scheme:dark) :root:not([data-theme="light"])` and `:root[data-theme="dark"]` (a nav button toggles the latter). Never declare a color solely inside a media or `[data-theme]` block.
-- **Palette**: `--paper` (ground), `--ink`/`--ink-2`/`--ink-3` (text), `--blue` (rules, headings, chart bars), `--vermilion` (the "赤ペン" accent — § numbers, diagram vertices, CTA; use sparingly).
-- **Type**: IBM Plex superfamily — `--f-sans` (IBM Plex Sans JP, body), `--f-mono` (IBM Plex Mono, years/labels/tags), `--f-cond` (IBM Plex Sans Condensed, hero and large numerals).
-- **Grid background**: `body::before` paints セクション方眼 — 28px fine rules plus a bold rule every 140px.
-- **Section shell**: `.sec` is a two-column grid — a sticky `.rail` (§ number + JA heading + EN label) beside `.body-col`. Sections are separated by hairline rules only; no alternating background bands.
-- **Figures**: numbered `fig.N` in appearance order. `fig.1` is the skills usage-history chart, `fig.2` the process diagram (drawn as a Feynman diagram — vertices are the dev phases). Renumber if figures are added or reordered.
+- **Tokens**: all colors are CSS custom properties on bare `:root`. Dark mode redefines only the tokens, in both `@media (prefers-color-scheme:dark) :root:not([data-theme="light"])` and `:root[data-theme="dark"]` (a nav button toggles the latter). Never declare a color solely inside a media or `[data-theme]` block. Values are taken from ScienceHub's `frontend/css/tokens.scss`.
+- **Theme colors, chosen by meaning** (as in ScienceHub):
+  - `--teal` — main. Nav/footer band, hero, rules, bars, markers, primary buttons (`.btn-main`). Not for body text (≈3:1 on white).
+  - `--yellow` — "ask / take part". The hire-me CTA (`.btn-fill`, nav Contact) and small highlight tags. Text on yellow is always `--on-yellow`, never white.
+  - `--maroon` — caution only: required-field marks and form errors.
+- **Neutrals**: `--bg`/`--surface` white, `--surface-2` neutral grey for caption/footer strips, `--ink`…`--ink-4` text, `--line`/`--line-strong` 1px rules.
+- **Type**: body uses ScienceHub's system stack (`--f-sans`); `--f-cond` (IBM Plex Sans Condensed) for the hero name and large numerals; `--f-mono` (IBM Plex Mono) for labels, dates and tags.
+- **Section heading**: `.rail` sits above the content — outlined two-digit number, EN label with a teal square, JA `<h2>`, and a teal bar on the bottom rule.
+- **Figures**: numbered `fig.N` in appearance order. `fig.1` is the skills usage-history chart, `fig.2` the process diagram (drawn as a Feynman diagram — vertices are the dev phases). The hero also carries a decorative Feynman diagram (`.hero-diagram`, `aria-hidden`).
+
+### Motion
+
+All motion lives under `@media (prefers-reduced-motion:no-preference)` and behind the `.js` class, so it is off for reduced-motion users and content is visible without JS.
+
+- Hero: name splits into letters that rise in; other hero lines fade up in sequence; the background grid drifts; the Feynman diagram draws itself.
+- Items marked `.st` (added by JS from a selector list) fade up when they enter the viewport, staggered within each batch. `.rail` draws its bar.
+- `fig.1` bars grow from the left; `fig.2` line draws and vertices pop in order.
+- Stats count up; a yellow scroll-progress bar runs under the nav; cards lift on hover.
 
 ## Deployment
 
@@ -70,10 +82,10 @@ Client-side details are generalised on purpose: former employers are described b
 The footer carries a version and a last-updated date:
 
 ```html
-<span class="ver">v2.0.0</span> · 更新 2026.08.23
+<span class="ver">v3.0.0</span> · 更新 2026.10.31
 ```
 
-**Bump both on every change that ships**, in the same commit as the change itself — a stale version string is worse than none. `v2.0.0` is the hand-authored redesign that replaced the Bootstrap build (2026-08-23).
+**Bump both on every change that ships**, in the same commit as the change itself — a stale version string is worse than none. `v2.0.0` is the hand-authored redesign that replaced the Bootstrap build (2026-08-23). `v3.0.0` (2026-10-31) moved the look to the ScienceHub style, square-cornered, with scroll motion.
 
 - **MAJOR** — visual redesign or a change to the section structure
 - **MINOR** — a section added or removed, a substantial content update (new project, reworked skills chart), or a new UI feature
@@ -85,8 +97,8 @@ The date is the ship date in `YYYY.MM.DD`. There is no build step, so nothing ge
 
 `#hero` → `#about` → `#skills` → `#works` → `#career` → `#services` → `#contact`
 
-Navigation highlights the active section via `IntersectionObserver`; a second observer reveals `.rv` sections on scroll.
-Sections are numbered `§01`–`§06` in the rail (About through Contact); renumber if a section is added or reordered.
+Navigation highlights the active section via `IntersectionObserver`; a second observer reveals `.st` items and `.rail` headings on scroll.
+Sections are numbered `01`–`06` in the heading (About through Contact); renumber if a section is added or reordered.
 
 ## SEO
 
